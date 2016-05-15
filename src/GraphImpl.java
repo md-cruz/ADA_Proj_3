@@ -16,6 +16,7 @@ import java.util.Set;
 public class GraphImpl implements Graph {
 
 	private Map<Integer,List<Edge>> graphEdges;
+	private List<Edge> edges;
 	private int numNodes;
 	private int numEdges;
 	
@@ -24,6 +25,7 @@ public class GraphImpl implements Graph {
 		this.numNodes = numNodes;
 		this.numEdges = numEdges;
 		graphEdges = new HashMap<Integer,List<Edge>>(numNodes);
+		edges = new ArrayList<Edge>(numEdges);
 
 	}
 	
@@ -73,16 +75,18 @@ public class GraphImpl implements Graph {
 			node2Edges = new ArrayList<Edge>(numEdges);
 		node2Edges.add(newEdge);
 		graphEdges.put(node2, node2Edges);
+		edges.add(newEdge);
 	}
 
 
 	@Override
 	public List<Edge> getGraphEdges() {
-		Set<Edge> edges = new HashSet<Edge>(numEdges);
+		/*Set<Edge> edges = new HashSet<Edge>(numEdges);
 		for(int node : graphEdges.keySet()){
 			edges.addAll(graphEdges.get(node));
 		}
-		return new ArrayList<Edge>(edges);
+		return new ArrayList<Edge>(edges);*/
+		return edges;
 	}
 
 }
