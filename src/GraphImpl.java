@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * 
@@ -76,11 +78,11 @@ public class GraphImpl implements Graph {
 
 	@Override
 	public List<Edge> getGraphEdges() {
-		List<Edge> edges = new ArrayList<Edge>(numEdges);
+		Set<Edge> edges = new HashSet<Edge>(numEdges);
 		for(int node : graphEdges.keySet()){
-			edges.retainAll(graphEdges.get(node));
+			edges.addAll(graphEdges.get(node));
 		}
-		return edges;
+		return new ArrayList<Edge>(edges);
 	}
 
 }

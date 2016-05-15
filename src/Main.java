@@ -25,6 +25,12 @@ public class Main {
 					wGraph.addEdge(Integer.parseInt(line[0]), Integer.parseInt(line[1]), -Integer.parseInt(line[3]));
 			}
 			// grafo preenchido, executar bellmanford
+			Search bellman = new BellmanFord(wGraph, numberOfRooms, numberOfCorridors);
+		
+			boolean result = bellman.bellmanFord(0, numberOfRooms-1);
+			
+			String res = result ? "Yes" : "No";
+			System.out.println(res);
 			
 		}catch (Exception e) {
 			e.printStackTrace();

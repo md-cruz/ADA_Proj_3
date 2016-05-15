@@ -1,3 +1,4 @@
+import java.util.List;
 
 public class BellmanFord implements Search {
 	
@@ -12,7 +13,8 @@ public class BellmanFord implements Search {
 	}
 
 	@Override
-	public void bellmanFord(int originNode, int destNode) throws NegativeCycleException {
+	public boolean bellmanFord(int originNode, int destNode) {
+		boolean loseMoney = false;
 		int [] distance = new int[numNodes];
 		int [] predecessor = new int[numNodes];
 		
@@ -29,9 +31,13 @@ public class BellmanFord implements Search {
 				break;
 		}
 		if(changes && updateLength(distance,predecessor))
-			throw new NegativeCycleException();
+			loseMoney = true;
 		
-		// nao sei se e para retornar
+		if(distance[destNode] < 0 )
+			loseMoney = true;
+		
+		
+		return loseMoney;
 
 	}
 	
@@ -42,7 +48,7 @@ public class BellmanFord implements Search {
 			int tail = e.getOutNode();
 			if(distance[tail] < Integer.MAX_VALUE){
 				int newLength = distance[tail] + e.getWeight();
-				if(newLength < distance[tail]){
+				if(newLength < distance[head]){
 					distance[head] = newLength;
 					predecessor[head] = tail;
 					changes = true;

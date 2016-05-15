@@ -7,8 +7,8 @@ public class EdgeImpl implements Edge {
 	private int weight;
 
 	public EdgeImpl(int node1, int node2, int weight) {
-		this.inNode = node1;
-		this.outNode = node2;
+		this.inNode = node2;
+		this.outNode = node1;
 		this.weight = weight;
 	}
 
