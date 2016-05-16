@@ -19,6 +19,7 @@ public class Main {
 			System.out.println("\nSleeping 2 seconds (for testing purposes)");
 			Thread.sleep(2000);
 			System.out.println("Awake!");
+
 			long startTime = System.nanoTime();
 			Graph wGraph = new GraphImpl(numberOfRooms,numberOfCorridors);
 			for(int i = 0; i < numberOfCorridors; i++){
