@@ -1,12 +1,6 @@
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
+
 
 /**
  * 
@@ -66,7 +60,8 @@ public class GraphImpl implements Graph {
 
 	@Override
 	public void addEdge(int node1, int node2, int weight) {		
-		edgeList.add(new EdgeImpl(node1,node2,weight));		
+		edgeList.add(new EdgeImpl(node1,node2,weight));
+		
 	}
 
 
