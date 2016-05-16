@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -22,13 +23,18 @@ public class GraphImpl implements Graph {
 	private Set<Edge> edges;
 	private int numNodes;
 	private int numEdges;
+	private boolean sorted;
+	private List<Edge> edgeList;
 	
 	
 	public GraphImpl(int numNodes, int numEdges){
 		this.numNodes = numNodes;
 		this.numEdges = numEdges;
+		this.sorted = false;
 		graphEdges = new HashMap<Integer,List<Edge>>(numNodes);
-		edges = new TreeSet<Edge>(new Comparator<Edge>(){
+		edgeList = new ArrayList<Edge>(numEdges);
+		
+		/*edges = new TreeSet<Edge>(new Comparator<Edge>(){
 			@Override
 			public int compare(Edge arg0, Edge arg1) {
 				if(arg0.getOutNode() > arg1.getOutNode())
@@ -36,7 +42,7 @@ public class GraphImpl implements Graph {
 				return -1;
 			}
 			
-		});
+		});*/
 	}
 	
 	
@@ -85,7 +91,8 @@ public class GraphImpl implements Graph {
 			node2Edges = new ArrayList<Edge>(numEdges);
 		node2Edges.add(newEdge);
 		graphEdges.put(node2, node2Edges);*/
-		edges.add(new EdgeImpl(node1,node2,weight));
+		//edges.add(new EdgeImpl(node1,node2,weight));
+		edgeList.add(new EdgeImpl(node1,node2,weight));
 	}
 
 
@@ -95,8 +102,22 @@ public class GraphImpl implements Graph {
 		for(int node : graphEdges.keySet()){
 			edges.addAll(graphEdges.get(node));
 		}*/
-		return new ArrayList<Edge>(edges);
-		//return edges;
+		//return new ArrayList<Edge>(edges);
+
+		if(!sorted){
+			Collections.sort(edgeList, new Comparator<Edge>(){
+			@Override
+			public int compare(Edge arg0, Edge arg1) {
+				if(arg0.getOutNode() > arg1.getOutNode())
+					return 1;
+				return -1;
+			}
+			
+		});
+			sorted = true;
+		}
+		
+		return edgeList;
 	}
 
 }

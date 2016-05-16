@@ -16,6 +16,7 @@ public class Main {
 			String [] line = reader.readLine().split("\\s+");
 			numberOfRooms = Integer.parseInt(line[0]);
 			numberOfCorridors = Integer.parseInt(line[1]);
+			long startTime = System.nanoTime();
 			Graph wGraph = new GraphImpl(numberOfRooms,numberOfCorridors);
 			for(int i = 0; i < numberOfCorridors; i++){
 				line = reader.readLine().split("\\s+");
@@ -26,10 +27,9 @@ public class Main {
 			}
 			// grafo preenchido, executar bellmanford
 			Search bellman = new BellmanFord(wGraph, numberOfRooms, numberOfCorridors);
-			long startTime = System.nanoTime();
 			boolean result = bellman.bellmanFord(0, numberOfRooms-1);
 			double timeTaken = (double) ((System.nanoTime() - startTime) / 1000000.0);		
-		//	System.out.println(timeTaken + " ms");
+			System.out.println(timeTaken + " ms");
 			String res = result ? "yes" : "no";
 			System.out.println(res);
 			
