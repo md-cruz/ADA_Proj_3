@@ -26,5 +26,5 @@ public class EdgeImpl implements Edge {
 	public int getOutNode() {
 		return this.outNode;
 	}
-
+	
 }

@@ -26,10 +26,11 @@ public class Main {
 			}
 			// grafo preenchido, executar bellmanford
 			Search bellman = new BellmanFord(wGraph, numberOfRooms, numberOfCorridors);
-		
+			long startTime = System.nanoTime();
 			boolean result = bellman.bellmanFord(0, numberOfRooms-1);
-			
-			String res = result ? "Yes" : "No";
+			double timeTaken = (double) ((System.nanoTime() - startTime) / 1000000.0);		
+		//	System.out.println(timeTaken + " ms");
+			String res = result ? "yes" : "no";
 			System.out.println(res);
 			
 		}catch (Exception e) {

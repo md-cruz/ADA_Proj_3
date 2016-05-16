@@ -33,10 +33,10 @@ public class BellmanFord implements Search {
 			if(!changes)
 				break;
 		}
-		if(changes && updateLength(distance,predecessor))
+		if(!loseMoney && changes && updateLength(distance,predecessor))
 			loseMoney = true;
 		
-		if(distance[destNode] < 0 )
+		if(!loseMoney && distance[destNode] < 0 )
 			loseMoney = true;
 		
 		

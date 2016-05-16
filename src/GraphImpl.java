@@ -1,9 +1,11 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * 
@@ -17,7 +19,7 @@ public class GraphImpl implements Graph {
 
 	private Map<Integer,List<Edge>> graphEdges;
 	
-	private List<Edge> edges;
+	private Set<Edge> edges;
 	private int numNodes;
 	private int numEdges;
 	
@@ -26,8 +28,15 @@ public class GraphImpl implements Graph {
 		this.numNodes = numNodes;
 		this.numEdges = numEdges;
 		graphEdges = new HashMap<Integer,List<Edge>>(numNodes);
-		edges = new ArrayList<Edge>(numEdges);
-
+		edges = new TreeSet<Edge>(new Comparator<Edge>(){
+			@Override
+			public int compare(Edge arg0, Edge arg1) {
+				if(arg0.getOutNode() > arg1.getOutNode())
+					return 1;
+				return -1;
+			}
+			
+		});
 	}
 	
 	
@@ -85,9 +94,9 @@ public class GraphImpl implements Graph {
 		/*Set<Edge> edges = new HashSet<Edge>(numEdges);
 		for(int node : graphEdges.keySet()){
 			edges.addAll(graphEdges.get(node));
-		}
-		return new ArrayList<Edge>(edges);*/
-		return edges;
+		}*/
+		return new ArrayList<Edge>(edges);
+		//return edges;
 	}
 
 }
