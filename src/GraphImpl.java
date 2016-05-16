@@ -16,6 +16,7 @@ import java.util.Set;
 public class GraphImpl implements Graph {
 
 	private Map<Integer,List<Edge>> graphEdges;
+	
 	private List<Edge> edges;
 	private int numNodes;
 	private int numEdges;
@@ -63,7 +64,7 @@ public class GraphImpl implements Graph {
 	public void addEdge(int node1, int node2, int weight) {
 		// TODO: verificar se e necessario todos os nodos guardarem informacao
 		// sobre as edges que estao associados, ou se basta ter um array de edges
-		List<Edge> node1Edges = graphEdges.get(node1);
+	/*	List<Edge> node1Edges = graphEdges.get(node1);
 		if(node1Edges == null)
 			node1Edges = new ArrayList<Edge>(numEdges);
 		Edge newEdge = new EdgeImpl(node1,node2,weight);
@@ -74,8 +75,8 @@ public class GraphImpl implements Graph {
 		if(node2Edges == null)
 			node2Edges = new ArrayList<Edge>(numEdges);
 		node2Edges.add(newEdge);
-		graphEdges.put(node2, node2Edges);
-		edges.add(newEdge);
+		graphEdges.put(node2, node2Edges);*/
+		edges.add(new EdgeImpl(node1,node2,weight));
 	}
 
 

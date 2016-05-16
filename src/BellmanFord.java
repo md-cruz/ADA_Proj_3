@@ -18,7 +18,7 @@ public class BellmanFord implements Search {
 		int [] distance = new int[numNodes];
 		int [] predecessor = new int[numNodes];
 		
-		for(int i : graph.nodes())
+		for(int i = 0; i < graph.numNodes() ;i++)
 			distance[i] = Integer.MAX_VALUE;
 		distance[originNode] = 0;
 		predecessor[originNode] = originNode;
