@@ -19,14 +19,15 @@ public class BellmanFord implements Search {
 		distance[originNode] = 0;
 		
 		boolean changes = false;
-		
 		for(int i = 1; i < numNodes && !loseMoney; i++){
 			changes = updateLength(distance);
 			if(distance[destNode] < 0)
 				loseMoney = true;
 			if(!changes)
 				break;
+			
 		}
+		
 		if(!loseMoney && changes && updateLength(distance))
 			loseMoney = true;
 		

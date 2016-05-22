@@ -16,10 +16,10 @@ public class Main {
 			String [] line = reader.readLine().split("\\s+");
 			numberOfRooms = Integer.parseInt(line[0]);
 			numberOfCorridors = Integer.parseInt(line[1]);
-			System.out.println("\nSleeping 2 seconds (for testing purposes)");
+			/*System.out.println("\nSleeping 2 seconds (for testing purposes)");
 			Thread.sleep(2000);
 			System.out.println("Awake!");
-
+*/
 			long startTime = System.nanoTime();
 			Graph wGraph = new GraphImpl(numberOfRooms,numberOfCorridors);
 			for(int i = 0; i < numberOfCorridors; i++){
@@ -34,7 +34,7 @@ public class Main {
 			Search bellman = new BellmanFord(wGraph, numberOfRooms, numberOfCorridors);
 			boolean result = bellman.bellmanFord(0, numberOfRooms-1);
 			double timeTaken = (double) ((System.nanoTime() - startTime) / 1000000.0);		
-			System.out.println(timeTaken + " ms");
+			//System.out.println(timeTaken + " ms");
 			String res = result ? "yes" : "no";
 			System.out.println(res);
 			
